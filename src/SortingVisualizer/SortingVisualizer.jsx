@@ -1,6 +1,6 @@
 import React from "react";
 import "./SortingVisualizer.css";
-import * as sortingAlgorithms from '../SortingAlgorithms/sortingAlgorithms'
+import {getMergeSortAnimations} from '../SortingAlgorithms/mergeSort'
 
 const ANIMATION_SPEED_MS = 25;
 
@@ -36,10 +36,9 @@ export default class SortingVisualizer extends React.Component {
   }
 
   mergeSort() {
-    const animations = sortingAlgorithms.getMergeSortAnimations(this.state.array);
+    const animations = getMergeSortAnimations(this.state.array);
     const arrayBars = document.getElementsByClassName('array-bar');
     let k;
-    console.log(animations)
 
     for(let i=0; i<animations.length; i++){
       if(i % 4 === 3){
@@ -84,8 +83,8 @@ export default class SortingVisualizer extends React.Component {
   }
 
   quickSort(){
-    sortingAlgorithms.quickSort(this.state.array, 0, this.state.array.length);
-    console.log(this.state.array);
+    // sortingAlgorithms.quickSort(this.state.array, 0, this.state.array.length);
+    // console.log(this.state.array);
   }
 
   heapSort(){
