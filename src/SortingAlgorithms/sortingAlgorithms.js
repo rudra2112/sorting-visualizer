@@ -32,10 +32,12 @@ function merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animation
     animations.push([i, j]);
     if(auxiliaryArray[i] <= auxiliaryArray[j]){
       animations.push([k, auxiliaryArray[i]]);
+      animations.push([k]);
       mainArray[k++] = auxiliaryArray[i++];
     }
     else{
       animations.push([k, auxiliaryArray[j]]);
+      animations.push([k]);
       mainArray[k++] = auxiliaryArray[j++];
     }
   }
@@ -45,6 +47,7 @@ function merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animation
     animations.push([i, i]);
     
     animations.push([k, auxiliaryArray[i]]);
+    animations.push([k]);
     mainArray[k++] = auxiliaryArray[i++];
     
   }
@@ -54,6 +57,7 @@ function merge(mainArray, startIdx, middleIdx, endIdx, auxiliaryArray, animation
     animations.push([j, j]);
     
     animations.push([k, auxiliaryArray[j]]);
+    animations.push([k]);
     mainArray[k++] = auxiliaryArray[j++];
 
   }
