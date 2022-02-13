@@ -1,0 +1,55 @@
+.array-container {
+  margin-top: 10%;
+  max-width: 1400x;
+  justify-content: center;
+}
+
+.array-bar {
+  max-width: 10px;
+  min-width: 1px;
+  display: inline-block;
+}
+
+nav {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* width:1495px; */
+  width: 97.3%;
+  height: 4.8pc;
+  background-color: cadetblue;
+  display: flex;
+  color: white;
+  padding: 0 20px;
+  align-items: center;
+  font-size: 30px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 25px;
+  padding: 8px 0 0;
+  overflow: hidden;
+  font-size: 20px;
+}
+
+li {
+  float: left;
+  padding: 5px;
+}
+
+.button {
+  background-color: cadetblue;
+  border: 0;
+  color: white;
+  font-size: 20px;
+}
+
+.reset {
+  position: absolute;
+  right: 25px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
