@@ -5,9 +5,9 @@ import { getQuickSortAnimations } from "../SortingAlgorithms/quickSort";
 import { getBubbleSortAnimations } from "../SortingAlgorithms/bubbleSort";
 import { getHeapSortAnimations } from "../SortingAlgorithms/heapSort";
 
-const ANIMATION_SPEED_MS = 50;
+const ANIMATION_SPEED_MS = 1;
 
-const NUMBER_OF_ARRAY_BARS = 100;
+const NUMBER_OF_ARRAY_BARS = 150;
 
 const PRIMARY_COLOR = "darkblue";
 
@@ -83,11 +83,7 @@ export default class SortingVisualizer extends React.Component {
       k = i;
     }
 
-    setTimeout(() => {
-      for (let i = 0; i < this.state.array.length; i++) {
-        arrayBars[i].style.backgroundColor = TERTIARY_COLOR;
-      }
-    }, k * ANIMATION_SPEED_MS);
+    this.SortingComplete(k);
   }
 
   quickSort() {
@@ -145,11 +141,7 @@ export default class SortingVisualizer extends React.Component {
       k = i;
     }
 
-    setTimeout(() => {
-      for (let i = 0; i < this.state.array.length; i++) {
-        arrayBars[i].style.backgroundColor = TERTIARY_COLOR;
-      }
-    }, k * ANIMATION_SPEED_MS);
+    this.SortingComplete(k);
   }
 
   heapSort() {
@@ -224,11 +216,7 @@ export default class SortingVisualizer extends React.Component {
       k = i;
     }
   
-    setTimeout(() => {
-      for (let i = 0; i < this.state.array.length; i++) {
-        arrayBars[i].style.backgroundColor = TERTIARY_COLOR;
-      }
-    }, k * ANIMATION_SPEED_MS);
+    this.SortingComplete(k);
     
   }
 
@@ -271,11 +259,16 @@ export default class SortingVisualizer extends React.Component {
       k = i;
     }
 
+    this.SortingComplete(k)
+  }
+
+  SortingComplete(time){
+    const arrayBars = document.getElementsByClassName("array-bar");
     setTimeout(() => {
       for (let i = 0; i < this.state.array.length; i++) {
         arrayBars[i].style.backgroundColor = TERTIARY_COLOR;
       }
-    }, k * ANIMATION_SPEED_MS);
+    }, time * ANIMATION_SPEED_MS);
   }
 
   render() {
