@@ -5,7 +5,7 @@
 }
 
 .array-bar {
-  max-width: 10px;
+  max-width: 30px;
   min-width: 1px;
   display: inline-block;
 }
@@ -52,4 +52,12 @@ li {
 
 .button:hover {
   cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb{
+  cursor: pointer;
+}
+
+.slidecontainer{
+  margin-top: 2.4%;
 }

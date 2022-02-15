@@ -5,10 +5,6 @@ import { getQuickSortAnimations } from "../SortingAlgorithms/quickSort";
 import { getBubbleSortAnimations } from "../SortingAlgorithms/bubbleSort";
 import { getHeapSortAnimations } from "../SortingAlgorithms/heapSort";
 
-const ANIMATION_SPEED_MS = 1;
-
-const NUMBER_OF_ARRAY_BARS = 150;
-
 const PRIMARY_COLOR = "darkblue";
 
 const SECONDARY_COLOR = "red";
@@ -18,6 +14,10 @@ const TERTIARY_COLOR = "darkgreen"
 const HIGHLIGHTER1 = "limegreen";
 
 const HIGHLIGHTER2 = "yellow";
+
+var ANIMATION_SPEED_MS = 1;
+
+var NUMBER_OF_ARRAY_BARS = 100;
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -41,6 +41,18 @@ export default class SortingVisualizer extends React.Component {
       document.getElementsByClassName("array-bar")[i].style.backgroundColor = PRIMARY_COLOR;
     }
     this.setState({ array });
+  }
+
+  changingNumberOfBars() {
+    var slider = document.getElementById("No-Of-Bars");
+    NUMBER_OF_ARRAY_BARS = slider.value;
+
+    this.resetArray();
+  }
+
+  changingSpeed(){
+    var slider = document.getElementById("Speed");
+    ANIMATION_SPEED_MS = 101 - slider.value;
   }
 
   mergeSort() {
@@ -74,7 +86,7 @@ export default class SortingVisualizer extends React.Component {
           setTimeout(() => {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
-            barOneStyle.backgroundColor = SECONDARY_COLOR;
+            barOneStyle.backgroundColor = HIGHLIGHTER2;
             barOneStyle.height = `${newHeight}px`;
           }, i * ANIMATION_SPEED_MS);
         }
@@ -322,6 +334,16 @@ export default class SortingVisualizer extends React.Component {
               }}
             ></div>
           ))}
+        </div>
+        <div className="slidecontainer">
+          <div style={{display: "inline-block", margin: "0 10%"}}>
+            <input type="range" min={10} max={200} className="slider" id="No-Of-Bars" onChange={() => this.changingNumberOfBars()}></input>
+            <div>Number of Bars</div>
+          </div>
+          <div style={{display: "inline-block", margin: "0 10%"}}>
+            <input type="range" min={-899} max={100} className="slider" id="Speed" onChange={() => this.changingSpeed()}></input>
+            <div>Speed</div>
+          </div>
         </div>
       </div>
     );
