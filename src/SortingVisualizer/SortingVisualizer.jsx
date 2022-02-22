@@ -5,11 +5,11 @@ import { getQuickSortAnimations } from "../SortingAlgorithms/quickSort";
 import { getBubbleSortAnimations } from "../SortingAlgorithms/bubbleSort";
 import { getHeapSortAnimations } from "../SortingAlgorithms/heapSort";
 
-const PRIMARY_COLOR = "darkblue";
+const PRIMARY_COLOR =  "#216cdd";
 
 const SECONDARY_COLOR = "red";
 
-const TERTIARY_COLOR = "darkgreen"
+const TERTIARY_COLOR = "green";
 
 const HIGHLIGHTER1 = "limegreen";
 
@@ -38,7 +38,8 @@ export default class SortingVisualizer extends React.Component {
       array.push(randomIntFromInterval(20, 550));
     }
     for (let i = 0; i < this.state.array.length; i++) {
-      document.getElementsByClassName("array-bar")[i].style.backgroundColor = PRIMARY_COLOR;
+      document.getElementsByClassName("array-bar")[i].style.backgroundColor =
+        PRIMARY_COLOR;
     }
     this.setState({ array });
   }
@@ -50,7 +51,7 @@ export default class SortingVisualizer extends React.Component {
     this.resetArray();
   }
 
-  changingSpeed(){
+  changingSpeed() {
     var slider = document.getElementById("Speed");
     ANIMATION_SPEED_MS = 101 - slider.value;
   }
@@ -67,9 +68,7 @@ export default class SortingVisualizer extends React.Component {
           const barOneStyle = arrayBars[barOneIdx].style;
           barOneStyle.backgroundColor = PRIMARY_COLOR;
         }, i * ANIMATION_SPEED_MS);
-      } 
-      
-      else {
+      } else {
         const isColorChange = i % 4 !== 2;
         if (isColorChange) {
           const [barOneIdx, barTwoIdx] = animations[i];
@@ -80,9 +79,7 @@ export default class SortingVisualizer extends React.Component {
             barOneStyle.backgroundColor = color;
             barTwoStyle.backgroundColor = color;
           }, i * ANIMATION_SPEED_MS);
-        } 
-        
-        else {
+        } else {
           setTimeout(() => {
             const [barOneIdx, newHeight] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
@@ -109,17 +106,13 @@ export default class SortingVisualizer extends React.Component {
           const pivotBar = arrayBars[animations[i][1]];
           pivotBar.style.backgroundColor = HIGHLIGHTER1;
         }, i * ANIMATION_SPEED_MS);
-      }
-
-      else if (animations[i][0] === "pointer") {
+      } else if (animations[i][0] === "pointer") {
         setTimeout(() => {
           const pointerIndex = arrayBars[animations[i][1]];
           const pointerIndexStyle = pointerIndex.style;
           pointerIndexStyle.backgroundColor = HIGHLIGHTER2;
         }, i * ANIMATION_SPEED_MS);
-      } 
-      
-      else {
+      } else {
         const pointerIndex = arrayBars[animations[i][1]];
         const barIndex = arrayBars[animations[i][2]];
         const pointerIndexStyle = pointerIndex.style;
@@ -130,9 +123,7 @@ export default class SortingVisualizer extends React.Component {
             pointerIndexStyle.backgroundColor = SECONDARY_COLOR;
             barStyle.backgroundColor = SECONDARY_COLOR;
           }, i * ANIMATION_SPEED_MS);
-        } 
-        
-        else if (animations[i][0] === "swap") {
+        } else if (animations[i][0] === "swap") {
           setTimeout(() => {
             const pointerHeight = animations[i][3];
             const barHeight = animations[i][4];
@@ -140,9 +131,7 @@ export default class SortingVisualizer extends React.Component {
             pointerIndexStyle.height = `${barHeight}px`;
             barStyle.height = `${pointerHeight}px`;
           }, i * ANIMATION_SPEED_MS);
-        } 
-        
-        else {
+        } else {
           setTimeout(() => {
             pointerIndexStyle.backgroundColor = PRIMARY_COLOR;
             barStyle.backgroundColor = PRIMARY_COLOR;
@@ -165,48 +154,44 @@ export default class SortingVisualizer extends React.Component {
     for (let i = 0; i < animations.length; i++) {
       const [command, barOneIdx, barTwoIdx] = animations[i];
       let barOneStyle;
-      if(barOneIdx<n){
+      if (barOneIdx < n) {
         barOneStyle = arrayBars[barOneIdx].style;
       }
 
       let barTwoStyle;
-      if(barTwoIdx<n){
-        barTwoStyle = arrayBars[barTwoIdx].style
+      if (barTwoIdx < n) {
+        barTwoStyle = arrayBars[barTwoIdx].style;
       }
-  
-      if(command === "compare"){
+
+      if (command === "compare") {
         setTimeout(() => {
           const parent = animations[i][3];
           const parentStyle = arrayBars[parent].style;
           parentStyle.backgroundColor = HIGHLIGHTER1;
 
-          if(barOneIdx<n){
+          if (barOneIdx < n) {
             barOneStyle.backgroundColor = SECONDARY_COLOR;
           }
-          
-          if(barTwoIdx<n){
+
+          if (barTwoIdx < n) {
             barTwoStyle.backgroundColor = SECONDARY_COLOR;
           }
-        }, i*ANIMATION_SPEED_MS);
-      }
-  
-      else if (command === "changeBack") {
+        }, i * ANIMATION_SPEED_MS);
+      } else if (command === "changeBack") {
         setTimeout(() => {
           const parent = animations[i][3];
           const parentStyle = arrayBars[parent].style;
           parentStyle.backgroundColor = PRIMARY_COLOR;
-          
-          if(barOneIdx<n){
+
+          if (barOneIdx < n) {
             barOneStyle.backgroundColor = PRIMARY_COLOR;
           }
-          
-          if(barTwoIdx<n){
+
+          if (barTwoIdx < n) {
             barTwoStyle.backgroundColor = PRIMARY_COLOR;
           }
         }, i * ANIMATION_SPEED_MS);
-      } 
-  
-      else if(command === "swap"){
+      } else if (command === "swap") {
         setTimeout(() => {
           const barOneHeight = animations[i][3];
           const barTwoHeight = animations[i][4];
@@ -214,22 +199,19 @@ export default class SortingVisualizer extends React.Component {
           const barTwoStyle = arrayBars[barTwoIdx].style;
           barOneStyle.height = `${barTwoHeight}px`;
           barTwoStyle.height = `${barOneHeight}px`;
-        }, i*ANIMATION_SPEED_MS);
-      }
-  
-      else{
+        }, i * ANIMATION_SPEED_MS);
+      } else {
         const color = command === "revertColor" ? PRIMARY_COLOR : HIGHLIGHTER2;
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
         }, i * ANIMATION_SPEED_MS);
       }
-  
+
       k = i;
     }
-  
+
     this.SortingComplete(k);
-    
   }
 
   bubbleSort() {
@@ -247,9 +229,7 @@ export default class SortingVisualizer extends React.Component {
           barOneStyle.backgroundColor = PRIMARY_COLOR;
           barTwoStyle.backgroundColor = PRIMARY_COLOR;
         }, i * ANIMATION_SPEED_MS);
-      } 
-
-      else if(command === "swap"){
+      } else if (command === "swap") {
         setTimeout(() => {
           const barOneHeight = animations[i][3];
           const barTwoHeight = animations[i][4];
@@ -257,11 +237,10 @@ export default class SortingVisualizer extends React.Component {
           const barTwoStyle = arrayBars[barTwoIdx].style;
           barOneStyle.height = `${barTwoHeight}px`;
           barTwoStyle.height = `${barOneHeight}px`;
-        }, i*ANIMATION_SPEED_MS);
-      }
-        
-      else{
-        const color = command === "colorChange" ? SECONDARY_COLOR : HIGHLIGHTER2;
+        }, i * ANIMATION_SPEED_MS);
+      } else {
+        const color =
+          command === "colorChange" ? SECONDARY_COLOR : HIGHLIGHTER2;
         setTimeout(() => {
           barOneStyle.backgroundColor = color;
           barTwoStyle.backgroundColor = color;
@@ -271,10 +250,10 @@ export default class SortingVisualizer extends React.Component {
       k = i;
     }
 
-    this.SortingComplete(k)
+    this.SortingComplete(k);
   }
 
-  SortingComplete(time){
+  SortingComplete(time) {
     const arrayBars = document.getElementsByClassName("array-bar");
     setTimeout(() => {
       for (let i = 0; i < this.state.array.length; i++) {
@@ -329,19 +308,33 @@ export default class SortingVisualizer extends React.Component {
               style={{
                 backgroundColor: PRIMARY_COLOR,
                 height: `${value}px`,
-                width: `${8 - 0.016 * NUMBER_OF_ARRAY_BARS}px`,
-                margin: `0 ${2 - 0.005 * NUMBER_OF_ARRAY_BARS}px`,
+                width: `${10.25 - (0.025 * NUMBER_OF_ARRAY_BARS)}px`,
+                margin: `0 ${1.85 - (0.005 * NUMBER_OF_ARRAY_BARS)}px`,
               }}
             ></div>
           ))}
         </div>
         <div className="slidecontainer">
-          <div style={{display: "inline-block", margin: "0 10%"}}>
-            <input type="range" min={10} max={200} className="slider" id="No-Of-Bars" onChange={() => this.changingNumberOfBars()}></input>
+          <div style={{ display: "inline-block", margin: "0 10%"}}>
+            <input
+              type="range"
+              min={10}
+              max={250}
+              className="slider"
+              id="No-Of-Bars"
+              onChange={() => this.changingNumberOfBars()}
+            ></input>
             <div>Number of Bars</div>
           </div>
-          <div style={{display: "inline-block", margin: "0 10%"}}>
-            <input type="range" min={-899} max={100} className="slider" id="Speed" onChange={() => this.changingSpeed()}></input>
+          <div style={{ display: "inline-block", margin: "0 10%"}}>
+            <input
+              type="range"
+              min={-899}
+              max={100}
+              className="slider"
+              id="Speed"
+              onChange={() => this.changingSpeed()}
+            ></input>
             <div>Speed</div>
           </div>
         </div>
