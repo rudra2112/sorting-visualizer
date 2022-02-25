@@ -1,64 +1,150 @@
 .array-container {
-  margin-top: 10%;
-  max-width: 1400x;
   justify-content: center;
+  transition: 2s all ease;
+  padding-bottom: 1%;
 }
 
-.array-bar {
-  max-width: 10px;
-  min-width: 4px;
+.array-bar{
   display: inline-block;
   border: none;
 }
 
-nav {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  /* width:1495px; */
-  width: 97.3%;
-  height: 4.8pc;
+.navbar {
   background-color: #dd2147ec;
-  display: flex;
   color: white;
   padding: 0 20px;
   align-items: center;
-  font-size: 30px;
+  box-shadow: 0px 6px 7px rgba(0, 0, 0, 0.562);
 }
 
 ul {
   list-style-type: none;
-  margin: 0 25px;
-  padding: 8px 0 0;
+  padding: 0 0px;
   overflow: hidden;
-  font-size: 20px;
-}
-
-li {
-  float: left;
-  padding: 5px;
 }
 
 .button {
   background-color: inherit;
   border: 0;
   color: white;
-  font-size: 20px;
+  font-size: inherit;
+  margin-bottom: 10%;
 }
 
-.reset {
-  position: absolute;
-  right: 25px;
+.button:disabled{
+  color:lightgray;
+}
+
+.button:disabled:hover{
+  cursor: wait;
 }
 
 .button:hover {
   cursor: pointer;
 }
 
-.slider::-webkit-slider-thumb{
-  cursor: pointer;
+.slidecontainer{
+  margin-top: 1.6%;
 }
 
-.slidecontainer{
-  margin-top: 2.4%;
+
+@media screen and (min-width: 1300px){
+  .array-container{
+    margin-top: 3.5%;
+  }
+
+  #Heading{
+    padding: 15px;
+    font-size: 36px;
+    padding-bottom: 5px;
+  }
+  
+  ul{
+    font-size: 20px;
+    margin-top: 2px;
+  }
+
+  .array-bar {
+    max-width: 6px;
+  }
+}
+
+
+@media screen and (max-width: 1300px) and (min-width: 768px){
+  .array-container{
+    margin-top: 2%;
+  }
+
+  #Heading{
+    padding: 5px;
+    font-size: 30px;
+    padding-bottom: 5px;
+  }
+
+  ul{
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .array-bar {
+    max-width: 6px;
+  }
+  
+}
+
+@media screen and (max-width: 768px){
+
+  .array-bar{
+    max-width: 4px;
+    margin: 0.5px !important;
+  }
+
+  #Heading{
+    padding: 5px;
+    font-size: 26px;
+    padding-bottom: 5px;
+  }
+}
+
+@media screen and (min-width: 450px) {
+
+  .reset {
+    position: absolute;
+    right: 25px;
+  }
+
+  li {
+    float: left;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .array-container{
+    margin-top: 10%;
+  }
+
+  .array-bar{
+    max-width: 2px;
+    margin: 0.43px !important;
+  }
+
+  #Heading{
+    padding: 10px;
+    font-size: 24px;
+    padding-bottom: 5px;
+  }
+
+  ul{
+    font-size: 12px;
+  }
+
+  .reset{
+    position: absolute;
+    right: 20px;
+  }
+
+  li{
+    float: left;
+  }
 }
