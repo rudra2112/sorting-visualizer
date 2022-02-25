@@ -311,6 +311,7 @@ export default class SortingVisualizer extends React.Component {
   disableFunctions(flag){
     const buttons = document.getElementsByClassName("button");
     const sliders = document.getElementsByClassName("slider");
+    
     buttons[0].disabled = flag;
     buttons[1].disabled = flag;
     buttons[2].disabled = flag;
