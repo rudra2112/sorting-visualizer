@@ -33,7 +33,7 @@ function heapify(array, n, idx, animations) {
     largest = r;
   }
 
-  if (largest != idx) {
+  if (largest !== idx) {
     swap(array, idx, largest, animations);
     heapify(array, n, largest, animations);
   }
